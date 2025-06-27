@@ -4,7 +4,7 @@ import ForgotPasswordForm from "../../../Shared/Forms/ForgetPasswordForm";
 const ForgotPassword = () => {
   return (
     <div className="">
-      <div className=" border border-yellow-300">
+      <div className="">
         <AuthWrapper
           AuthForm={ForgotPasswordForm}
           headingText="Verify your Email!"

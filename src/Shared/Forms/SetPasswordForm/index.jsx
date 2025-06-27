@@ -15,7 +15,7 @@ const SetPasswordForm = () => {
   const location = useLocation();
 
   useEffect(() => {
-    !location?.state?.email && navigate("/");
+    // !location?.state?.email && navigate("/");
   }, []);
 
   const handleSubmit = (values) => {
@@ -32,14 +32,15 @@ const SetPasswordForm = () => {
   };
 
   return (
-    <div className="flex align-center justify-center px-4 py-8 h-full m-3">
-      <div className="my-auto md:w-96 w-full">
-        <div className="my-8">
-          <h3 className="m-auto text-2xl text-blacks font-bold text-center w-max px-2 border-b border-gray-300 py-2 rounded-lg shadow-lg shadow-[#0051de49]">
-            Babylon WorkShop
-          </h3>
+    <div className="flex items-center justify-center px-4 w-screen py-12 h-full">
+      <div className="bg-white shadow-lg rounded-xl w-full md:w-1/2 lg:w-2/5 xl:w-1/3 p-8">
+        <div className="text-center mb-6">
+          {/* <img width={150} src={Images.LOGO_IMG} alt="Logo" className="mx-auto mb-2" /> */}
+          <h3 className="font-dm-sans font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[32px] leading-[40px] text-black text-center">Reset Password</h3>
         </div>
-        <h3 className="w-full text-h3 font-bold mb-4">Set New Password</h3>
+        <h3 className="w-full text-black mb-3 text-center">
+          Create a new password
+        </h3>
         <div className="w-full">
           <Formik
             initialValues={{
@@ -74,6 +75,24 @@ const SetPasswordForm = () => {
                     error={
                       errors.newPassword && touched.newPassword
                         ? errors.newPassword
+                        : ""
+                    }
+                  />
+                </div>
+                <div className="mb-3">
+                  <InputField
+                    type="password"
+                    required={true}
+                    name="confirmPassword"
+                    label={"Confirm Password"}
+                    value={values.confirmPassword}
+                    onBlurHandle={handleBlur}
+                    placeholder="Confirm your password"
+                    onChangeHandle={handleChange}
+                    className="w-full mb-0 p-2 border rounded"
+                    error={
+                      errors.confirmPassword && touched.confirmPassword
+                        ? errors.confirmPassword
                         : ""
                     }
                   />

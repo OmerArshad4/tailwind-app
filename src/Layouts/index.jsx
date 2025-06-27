@@ -17,7 +17,7 @@ const UserLayout = ({ isPrivate, children }) => {
       {isPrivate && (
         <SideBar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
       )}
-      <div className={`border bg-gray-100 min-h-screen ${isPrivate ? "lg:ml-64" : ""}`}>{children}</div>
+      <div className={`min-h-screen ${isPrivate ? "lg:ml-64" : ""}`}>{children}</div>
     </div>
   );
 };

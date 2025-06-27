@@ -20,6 +20,7 @@ const newPasswordValidation = Yup.string()
     "Password must be at least 8 characters containing uppercase, lowercase, number, and symbol."
   )
   .required("Password required");
+  
 
 const phoneValidation = Yup.string()
   .matches(/^[0-9]{1,15}$/, "Phone number is not valid")
@@ -147,4 +148,7 @@ export const VERIFY_OTP_VALIDATION_SCHEMA = Yup.object().shape({
 export const NEW_PASSWORD_VALIDATION_SCHEMA = Yup.object().shape({
   email: emailValidation,
   newPassword: newPasswordValidation,
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
+    .required("Confirm Password is required"),
 });

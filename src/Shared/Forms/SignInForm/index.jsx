@@ -35,12 +35,12 @@ const SignInForm = () => {
           <div className="text-center mb-6">
             {/* You can re-enable the logo here if needed */}
             {/* <img width={150} src={Images.LOGO_IMG} alt="Logo" className="mx-auto mb-2" /> */}
-            <h3 className="text-2xl font-bold text-gray-800">
+            <h3 className="font-dm-sans font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[32px] leading-[40px] text-black text-center">
               Welcome Back, Admin
             </h3>
-            <p className="text-sm text-gray-500 mt-1">
+            <h3 className="font-dm-sans font-normal text-[20px] leading-[24px] text-black text-center mt-2">
               Sign in to your admin control panel
-            </p>
+            </h3>
           </div>
 
           {/* Formik Form */}

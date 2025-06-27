@@ -6,7 +6,8 @@ import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 import { store } from "./Redux/configureStore";
 import reportWebVitals from "./reportWebVitals";
-
+import '@fontsource/dm-sans/400.css'; // Normal
+import '@fontsource/dm-sans/700.css'; // Bold
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>

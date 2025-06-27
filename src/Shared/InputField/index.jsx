@@ -37,12 +37,12 @@ const InputField = (props) => {
     <div className={` w-full ${mainClass}`}>
       <label
         htmlFor="input"
-        className="font-semibold flex gap-x-1 text-stone-900"
+        className="font-semibold  text-base tabular-nums	leading-5 tracking-[0.01em] text-black/90 flex gap-x-1"
       >
         {label}
-        {required && (
+        {/* {required && (
           <FaAsterisk size={8} className="inline text-red-600 mb-2" />
-        )}
+        )} */}
         {/* {toolTip && (
           <ToolTip
             ToolTipText={toolTip}
@@ -72,7 +72,7 @@ const InputField = (props) => {
           onKeyDown={handleKeyPress}
           min={type === "number" ? 0 : ""}
           step={type === "number" ? "any" : ""}
-          className={`mt-1 text-stone-900 rounded-sm w-full py-3 border border-gray-300 px-3 transition-all hover:ring-[#0052DE] hover:ring-opacity-30 focus:outline-none focus:border-[#0052DE] focus:ring-[#0052DE] focus:ring-2 focus:ring-opacity-30 focus-visible:outline-none focus-visible:border-[#0052DE] focus-visible:ring-opacity-30 
+          className={`mt-1 font-light text-base leading-5 tracking-[0.01em] 	align-middle tabular-nums text-black/65 rounded-lg  w-full py-3 border border-black/30 px-3 transition-all hover:ring-[#0052DE] hover:ring-opacity-30 focus:outline-none focus:border-[#2F4D67] focus:ring-[#2F4D67] focus:ring-2 focus:ring-opacity-30 focus-visible:outline-none focus-visible:border-[#2F4D67] focus-visible:ring-opacity-30 
           
           ${type === "password" ? "pr-14" : ""} ${className} ${
             type === "number" ? "appearance-none" : ""

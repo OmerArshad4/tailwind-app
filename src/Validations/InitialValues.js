@@ -70,4 +70,5 @@ export const VERIFY_OTP_INITIAL_VALUES = {
 export const NEW_PASSWORD_INITIAL_VALUES = {
   email: "",
   newPassword: "",
+    confirmPassword: "", 
 };

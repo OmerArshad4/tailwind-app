@@ -37,11 +37,11 @@ const ForgotPasswordForm = (props) => {
         <div className="bg-white shadow-lg rounded-xl w-full md:w-1/2 lg:w-2/5 xl:w-1/3 p-8">
           <div className="text-center mb-6">
             {/* <img width={150} src={Images.LOGO_IMG} alt="Logo" className="mx-auto mb-2" /> */}
-            <h3 className="text-2xl font-bold text-gray-800">
+            <h3 className="font-dm-sans font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[32px] leading-[40px] text-black text-center">
               Forgot Password
             </h3>
           </div>
-          <h3 className="w-full text-black mb-3 text-center">
+          <h3 className="font-dm-sans font-normal text-[20px] leading-[24px] text-black text-center my-2">
             Enter the email for verification code
           </h3>
           <div className="w-full">

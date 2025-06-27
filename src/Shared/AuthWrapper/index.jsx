@@ -1,5 +1,7 @@
 import { memo } from "react";
 import Images from "../../HelperMethods/ImgConstants";
+import StatusCard from "../StatusCard/Index";
+import { FaRegFolderClosed } from "react-icons/fa6";
 
 const AuthWrapper = (props) => {
   const { AuthForm } = props;
@@ -8,20 +10,23 @@ const AuthWrapper = (props) => {
   return (
   <div className="grid sm:grid-cols-1 min-h-screen overflow-hidden">
   <div className="h-full w-full bg-gradient-to-br from-[#2F4D67] to-[#1A7F8B] flex items-center justify-center">
-    {/* Centering wrapper */}
-    <div className="flex flex-col items-center space-y-6">
-      {/* Logo & Text */}
+ 
+    <div className="flex flex-col items-center">
+    
       <div className="text-center">
         <img
           src={Images.botLogo}
           alt="SniffyBot Logo"
-          className="w-24 mx-auto mb-2"
+          className="w-full sm:w-[200px] md:w-[279px] h-auto object-cover"
+           
         />
-        <h1 className="text-white text-2xl font-bold">SniffyBot</h1>
-        <p className="text-white text-sm italic">Automation System</p>
+        <h1 className="font-oswald font-bold text-[24px] sm:text-[28px] md:text-[32px] leading-[48px] text-center text-white">SniffyBot</h1>
+        <p className="font-oswald font-normal text-[18px] sm:text-[20px] leading-[24px] text-center text-white">Automation System</p>
       </div>
+    
+ 
 
-      {/* Auth Form */}
+     
       {AuthForm && <AuthForm length={5} />}
     </div>
   </div>

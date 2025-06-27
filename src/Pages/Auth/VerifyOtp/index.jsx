@@ -8,7 +8,7 @@ const VerifyOtp = () => {
 
   return (
     <div className="">
-      <div className=" border border-yellow-300">
+      <div className="">
         <AuthWrapper
           AuthForm={OtpForm}
           OtpHandleSubmit={handleSubmit}
