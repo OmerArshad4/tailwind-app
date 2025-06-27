@@ -9,9 +9,17 @@ import { TbTruckDelivery } from "react-icons/tb";
 import React, { useEffect, useState } from "react";
 import { MdOutlineCarCrash } from "react-icons/md";
 import { IoCarSportOutline } from "react-icons/io5";
+import { LuClipboardList, LuClock } from "react-icons/lu";
+import { BsCheck2Circle } from "react-icons/bs";
+import { MdErrorOutline, MdHistory } from "react-icons/md";
+import { IoMdConstruct } from "react-icons/io";
+import { FiPlay, FiUploadCloud } from "react-icons/fi";
 // import LineChart from "../../../Shared/Charts/LineChart";
 import { DASHBOARD_STATS_API_URL } from "../../../Utils/constant";
 import { getDashboardStatsByAdmin } from "../../../Redux/features/Admin/adminApi";
+import StatusCard from "../../../Shared/StatusCard/Index";
+import SectionHeader from "../../../Shared/SectionHeader/imdex";
+import ActionCard from "../../../Shared/ActionCard/Index";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -48,114 +56,79 @@ const Dashboard = () => {
 
   const CardsData = [
     {
-      label: "All Vehicles",
-      value: statsData?.AllVehicle,
-      redirectPath: () =>
-        navigate("/admin/allVehicles/all", { state: { status: "" } }),
+      label: "Entries Submitted Today",
+      value: statsData?.entriesSubmittedToday ?? 0,
+      subLabel: "Across 22 contests",
       icon: (
-        <TbCar size={58} className="text-blue-600 bg-blue-200 p-3 rounded-sm" />
-      ),
-    },
-    {
-      label: "Vehicles Pending",
-      value: statsData?.vehiclePending,
-      redirectPath: () =>
-        navigate("/admin/allVehicles/Pending", {
-          state: { status: "Pending" },
-        }),
-      icon: (
-        <TbCarGarage
-          size={58}
-          className="text-blue-600 bg-blue-200 p-3 rounded-sm"
+        <LuClipboardList
+          size={40}
+          className="text-blue-600 bg-blue-100 p-2 rounded-md"
         />
       ),
     },
     {
-      label: "Vehicles In Process",
-      value: statsData?.vehicleInProgress,
-      redirectPath: () =>
-        navigate("/admin/allVehicles/InProgress", {
-          state: { status: "InProgress" },
-        }),
+      label: "Confirmed Entries",
+      value: statsData?.confirmedEntries ?? 0,
+      subLabel: "Confirmed via email",
       icon: (
-        <MdOutlineCarCrash
-          size={58}
-          className="text-blue-600 bg-blue-200 p-3 rounded-sm"
+        <BsCheck2Circle
+          size={40}
+          className="text-green-600 bg-green-100 p-2 rounded-md"
         />
       ),
     },
     {
-      label: "Vehicles Delivered",
-      value: statsData?.vehicleDelivered,
-      redirectPath: () =>
-        navigate("/admin/allVehicles/Delivered", {
-          state: { status: "Delivered" },
-        }),
+      label: "Failed Attempts",
+      value: statsData?.failedAttempts ?? 0,
+      subLabel: "Invalid IBAN / captcha failed",
       icon: (
-        <IoCarSportOutline
-          size={58}
-          className="text-blue-600 bg-blue-200 p-2 rounded-sm"
+        <MdErrorOutline
+          size={40}
+          className="text-red-600 bg-red-100 p-2 rounded-md"
         />
       ),
     },
     {
-      label: "Vehicles Not In Shop",
-      value: statsData?.NotInShop,
-      redirectPath: () =>
-        navigate("/admin/allVehicles/NotInShop", {
-          state: { status: "NotInShop" },
-        }),
+      label: "Queued for Tomorrow",
+      value: statsData?.queuedForTomorrow ?? 0,
+      subLabel: "Scheduled for entry tomorrow",
       icon: (
-        <IoCarSportOutline
-          size={58}
-          className="text-blue-600 bg-blue-200 p-2 rounded-sm"
+        <LuClock
+          size={40}
+          className="text-indigo-600 bg-indigo-100 p-2 rounded-md"
         />
       ),
     },
     {
-      label: "Total Technicians",
-      value: statsData?.totalTechnician,
-      redirectPath: () => navigate("/admin/technicians"),
+      label: "Active Bots",
+      value: "3 Active Bots",
+      subLabel: "Form filler, Email checker, Crawler",
       icon: (
-        <GrUserAdmin
-          size={58}
-          className="text-blue-600 bg-blue-200 p-2 rounded-sm"
+        <IoMdConstruct
+          size={40}
+          className="text-emerald-600 bg-emerald-100 p-2 rounded-md"
         />
       ),
     },
     {
-      label: "Parts Ready To Order",
-      value: statsData?.vehiclePartReadyToOrder,
-      redirectPath: () =>
-        navigate("/allParts", { state: { status: "ReadyToOrder" } }),
+      label: "Recent Task Runs",
+      value: "Last Run: 12 mins ago",
+      subLabel: "Tasks: 200 | Success: 180 | Failures: 20",
       icon: (
-        <TbTruckDelivery
-          size={58}
-          className="text-blue-600 bg-blue-200 p-2 rounded-sm"
+        <MdHistory
+          size={40}
+          className="text-yellow-600 bg-yellow-100 p-2 rounded-md"
         />
       ),
     },
     {
-      label: "Parts Ordered",
-      value: statsData?.vehiclePartOrdered,
-      redirectPath: () =>
-        navigate("/allParts", { state: { status: "Ordered" } }),
+      label: "Latest Upload",
+      value: "Today, 3:35 PM",
+      subLabel: "256 customers queued",
       icon: (
-        <LuGift
-          size={58}
-          className="text-blue-600 bg-blue-200 p-2 rounded-sm"
-        />
-      ),
-    },
-    {
-      label: "Parts Delivered",
-      value: statsData?.vehiclePartDelivered,
-      redirectPath: () =>
-        navigate("/allParts", { state: { status: "Delivered" } }),
-      icon: (
-        <BsHouseDown
-          size={58}
-          className="text-blue-600 bg-blue-200 p-2 rounded-sm"
+        <FiUploadCloud
+          size={40}
+          className="text-sky-600 bg-sky-100 p-2 rounded-md"
         />
       ),
     },
@@ -173,24 +146,82 @@ const Dashboard = () => {
 
   return (
     <div className="m-4 md:m-8 lg:mx-12">
-      <h1 className="text-stone-900 font-semibold text-xl mb-4">Dashboard</h1>
+      <SectionHeader
+        title="Admin Control Center"
+        subtitle="Upload CSV with customer data"
+      />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-        {CardsData.map((item, index) => (
-          <div
-            key={index}
-            className="bg-white border border-gray-300 rounded-sm shadow-md flex justify-evenly items-center py-8 cursor-pointer"
-            onClick={item?.redirectPath}
-          >
-            {item?.icon}
-
-            <div>
-              <p className="font-bold text-3xl ">{item?.value}</p>
-              <p className="text-blue-600 font-semibold">{item?.label}</p>
-            </div>
+      <div className="space-y-8">
+        {/* Status Overview Section */}
+        <div>
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">
+            Status Overview
+          </h2>
+          <div className="min-w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
+            {CardsData.slice(0, 3).map((card, index) => (
+              <StatusCard
+                key={index}
+                title={card.label}
+                value={card.value}
+                subtitle={card.subLabel}
+                icon={card.icon}
+              />
+            ))}
           </div>
-        ))}
+        </div>
+
+        {/* Summary Statistics Section */}
+        <div>
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">
+            Summary Statistics
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
+            {CardsData.slice(3).map((card, index) => (
+              <StatusCard
+                key={index + 3}
+                title={card.label}
+                value={card.value}
+                subtitle={card.subLabel}
+                icon={card.icon}
+              />
+            ))}
+          </div>
+        </div>
       </div>
+     
+      <h2 className="text-base font-semibold text-gray-800 mb-4">Quick Actions</h2>
+      <div className="min-w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
+        <ActionCard
+          icon={<FiUploadCloud className="text-xl" />}
+          title="Upload Customer CSV"
+          description="Import new customers for entry automation."
+          buttonText="+ Upload CSV"
+          buttonVariant="primary"
+          iconColor="text-teal-700"
+          onClick={() => console.log("Upload clicked")}
+        />
+
+        <ActionCard
+          icon={<FiPlay className="text-xl" />}
+          title="Trigger Crawlers"
+          description="Run contest crawler on known URLs and keywords."
+          buttonText="Run Now"
+          buttonVariant="secondary"
+          iconColor="text-green-600"
+          onClick={() => console.log("Run clicked")}
+        />
+
+        <ActionCard
+          icon={<FiPlay className="text-xl" />}
+          title="View Logs & Reports"
+          description="See full system logs or download summary reports."
+          buttonText="Open Logs"
+          buttonVariant="secondary"
+          iconColor="text-purple-600"
+          onClick={() => console.log("Logs clicked")}
+        />
+      </div>
+    
 
       {/* <div className="bg-white shadow-lg rounded-sm p-4 mb-4 border border-gray-300">
         <h1 className="text-stone-900 font-semibold text-2xl mb-4 items-center">

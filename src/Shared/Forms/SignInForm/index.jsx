@@ -16,16 +16,29 @@ const SignInForm = () => {
   const navigate = useNavigate();
 
   const handleLoginSubmit = (values) => {
+     const dummyUser = {
+    email: "admin@example.com",
+    password: "admin123",
+  };  if (
+    values.email === dummyUser.email &&
+    values.password === dummyUser.password
+  ) {
+    // You can also store token or user in localStorage if needed
+    navigate("/admin/dashboard");
+  } else {
+    alert("Invalid credentials");
+  }
+   
     const data = {
       apiEndpoint: LOGIN_API_URL,
       requestData: JSON.stringify(values),
     };
 
-    dispatch(login(data)).then((res) => {
-      if (res?.type === "login/fulfilled") {
-        navigate("/admin/dashboard");
-      }
-    });
+    // dispatch(login(data)).then((res) => {
+    //   if (res?.type === "login/fulfilled") {
+    //     navigate("/admin/dashboard");
+    //   }
+    // });
   };
 
   return (

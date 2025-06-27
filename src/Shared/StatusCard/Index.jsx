@@ -8,7 +8,7 @@ export default function StatusCard({
   dot
 }) {
   return (
-    <div className="bg-white rounded-lg border border-gray-200 shadow-sm px-5 py-4 w-full max-w-md flex flex-col justify-between gap-2">
+    <div className="bg-white border border-[#E2E8F0] rounded-lg shadow-sm px-5 py-4 w- gap-1">
       <div className="flex items-start justify-between">
         <p className="text-sm text-gray-500 font-medium">{title}</p>
         {icon && <div>{icon}</div>}
@@ -29,8 +29,7 @@ export default function StatusCard({
   );
 }
 
-
-// USEAGE IN COMPONENT
+ 
 //   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
 //     <StatusCard
 //   title="Latest Upload"

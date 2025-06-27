@@ -8,11 +8,11 @@ export function PrivateRoute({ Component, props, role }) {
   const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (!user) {
-      navigate("/signIn");
-    } else if (user) {
-      user.role !== role && navigate("/");
-    }
+    // if (!user) {
+    //   navigate("/signIn");
+    // } else if (user) {
+    //   user.role !== role && navigate("/");
+    // }
   }, [navigate, user]);
 
   return <Component {...props} />;

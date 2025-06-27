@@ -8,6 +8,8 @@ import { store } from "./Redux/configureStore";
 import reportWebVitals from "./reportWebVitals";
 import '@fontsource/dm-sans/400.css'; // Normal
 import '@fontsource/dm-sans/700.css'; // Bold
+import "@fontsource/oswald/400.css"; // Regular
+import "@fontsource/oswald/600.css"; // Semi-bold
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>

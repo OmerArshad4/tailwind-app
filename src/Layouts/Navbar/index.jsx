@@ -34,7 +34,7 @@ const Navbar = ({ toggleSidebar }) => {
   return (
     <>
       <div className="w-full h-16 bg-[#151D20] flex justify-between items-center px-4 md:px-10 sticky top-0 z-50">
-        <h3 className="text-2xl text-white font-semibold">Babylon WorkShop</h3>
+        <h3 className="text-2xl text-white font-semibold">Sniffy Bot</h3>
 
         <span className="flex space-x-4 items-center">
           <HiUser

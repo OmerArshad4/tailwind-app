@@ -117,7 +117,7 @@ const AssignedVehicles = () => {
         // buttonStyles
         cancelBtn={false}
         isOpen={showUpdateVehicleModal}
-        heading={"Update Vehicle Status"}
+        heading={"Update Vehicle Status"} 
         toggle={() => toggleUpdateVehicleModal()}
         description={
           <UpdateVehicleStatusForm

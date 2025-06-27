@@ -10,8 +10,8 @@ const AdminRoutes = [
   {
     role: "admin",
     isPublic: false,
-    path: "/admin/allVehicles",
-    component: lazy(() => import("../Pages/Vehicles")),
+    path: "/admin/upload-customers",
+    component: lazy(() => import("../Pages/Admin/UploadCustomer/Index")),
   },
   {
     role: "admin",

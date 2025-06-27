@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fontsource/dm-sans": "^5.2.6",
+    "@fontsource/oswald": "^5.2.6",
     "@react-pdf/renderer": "^4.2.2",
     "@reduxjs/toolkit": "^2.5.0",
     "axios": "^1.7.9",
