@@ -34,7 +34,7 @@ const InputField = (props) => {
   };
 
   return (
-    <div className={` w-full ${mainClass}`}>
+    <div className={`${mainClass ?? 'w-full'}`}>
       <label
         htmlFor="input"
         className="font-semibold  text-base tabular-nums	leading-5 tracking-[0.01em] text-black/90 flex gap-x-1"

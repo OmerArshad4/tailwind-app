@@ -103,8 +103,9 @@ const Sidebar = ({ toggleSidebar, isSidebarOpen }) => {
 
   return (
     isSidebarOpen && (
+      
       <div
-        className={`bg-[#1A7F8B] h-full border-r border border-[#1A7F8B] justify-between fixed top-0 lg:top-16 transition-all w-64 overflow-y-auto z-50 `}
+        className={`bg-[#1A7F8B] h-full border-r border border-[#1A7F8B] justify-between fixed top-0  transition-all w-64 overflow-y-auto z-50 `}
       >
         <div>
           <div className="block lg:hidden">

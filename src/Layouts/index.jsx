@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const UserLayout = ({ isPrivate, children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(
-    window.innerWidth >= 1024 ? true : false
+    window.innerWidth >= 1024
   );
 
   const toggleSidebar = () => {
@@ -12,12 +12,21 @@ const UserLayout = ({ isPrivate, children }) => {
   };
 
   return (
-    <div>
-      {isPrivate && <Navbar toggleSidebar={toggleSidebar} />}
+    <div className="flex min-h-screen bg-[#F6F5F3]">
+      {/* Sidebar stays on the left */}
       {isPrivate && (
-        <SideBar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
+        <SideBar
+          toggleSidebar={toggleSidebar}
+          isSidebarOpen={isSidebarOpen}
+        />
       )}
-      <div className={`min-h-screen ${isPrivate ? "lg:ml-64" : ""}`}>{children}</div>
+
+      {/* Right side: Navbar + Page Content */}
+      <div className={`flex-1 ${isPrivate ? "lg:ml-64" : ""}`}>
+        {isPrivate && <Navbar toggleSidebar={toggleSidebar} />}
+
+        <main className="p-4">{children}</main>
+      </div>
     </div>
   );
 };

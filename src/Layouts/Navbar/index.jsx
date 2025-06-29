@@ -5,9 +5,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineSettings } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { FiSearch, FiBell } from 'react-icons/fi';
+import { BsQuestionCircle } from 'react-icons/bs';
 // import Images from "../../../HelperMethods/ImgConstants";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { customLogout } from "../../Redux/features/Auth/authSlice";
+import InputField from "../../Shared/InputField";
 
 const Navbar = ({ toggleSidebar }) => {
   const menuRef = useRef(null);
@@ -33,17 +36,19 @@ const Navbar = ({ toggleSidebar }) => {
 
   return (
     <>
-      <div className="w-full h-16 bg-[#151D20] flex justify-between items-center px-4 md:px-10 sticky top-0 z-50">
-        <h3 className="text-2xl text-white font-semibold">Sniffy Bot</h3>
+      <div className="w-full h-16  flex justify-between items-center px-4 md:px-10 sticky top-0 z-50 bg-white dark:bg-gray-900">
+      <InputField className="w-[292px]" placeholder ="search"/>
 
-        <span className="flex space-x-4 items-center">
-          <HiUser
-            size={34}
-            className="text-white border border-white hover:bg-[#0052DE] rounded-full p-1 relative"
-            onClick={() => {
-              setShowMenu(!showMenu);
-            }}
-          />
+           <div className="flex items-center gap-4">
+          {/* Help Icon */}
+          <BsQuestionCircle className="text-[#F9837C] text-xl cursor-pointer" />
+
+          {/* Notification Bell with Red Dot */}
+          <div className="relative">
+            <FiBell className="text-[#F9837C]  text-xl cursor-pointer" />
+            <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white" />
+          </div>
+        </div>
           <GiHamburgerMenu
             size={30}
             onClick={toggleSidebar}
@@ -65,7 +70,7 @@ const Navbar = ({ toggleSidebar }) => {
               </Link>
             </div>
           )}
-        </span>
+      
       </div>
     </>
   );
