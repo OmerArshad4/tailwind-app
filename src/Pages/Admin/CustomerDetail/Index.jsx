@@ -6,7 +6,6 @@ import InfoBlock from "../../../Shared/InfoBlock/Index";
 
 export default function CustomerDetail() {
  
-
   return (
     <div className="m-4 md:m-8 lg:mx-12">
       <SectionHeader
