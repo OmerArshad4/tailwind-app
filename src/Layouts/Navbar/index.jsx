@@ -37,7 +37,7 @@ const Navbar = ({ toggleSidebar }) => {
   return (
     <>
       <div className="w-full h-16  flex justify-between items-center px-4 md:px-10 sticky top-0 z-50 bg-white dark:bg-gray-900">
-      <InputField className="w-[292px]" placeholder ="search"/>
+      <InputField className="max-w-[292px]" placeholder ="search"/>
 
            <div className="flex items-center gap-4">
           {/* Help Icon */}
@@ -52,7 +52,7 @@ const Navbar = ({ toggleSidebar }) => {
           <GiHamburgerMenu
             size={30}
             onClick={toggleSidebar}
-            className="text-white active:text-[#0052DE] block lg:hidden"
+            className="text-black active:text-[#0052DE] block lg:hidden"
           />
 
           {showMenu && (

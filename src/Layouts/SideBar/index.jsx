@@ -105,7 +105,7 @@ const Sidebar = ({ toggleSidebar, isSidebarOpen }) => {
     isSidebarOpen && (
       
       <div
-        className={`bg-[#1A7F8B] h-full border-r border border-[#1A7F8B] justify-between fixed top-0  transition-all w-64 overflow-y-auto z-50 `}
+        className={`bg-[#1A7F8B] h-full border-r border border-[#1A7F8B] justify-between fixed top-0  transition-all w-64 overflow-y-auto  z-[1000]`}
       >
         <div>
           <div className="block lg:hidden">
@@ -114,7 +114,7 @@ const Sidebar = ({ toggleSidebar, isSidebarOpen }) => {
               <RxCross2
                 size={24}
                 onClick={toggleSidebar}
-                className=" text-gray-600 hover:bg-gray-300 hover:text-red-600"
+                className=" text-black hover:bg-gray-300 hover:text-red-600"
               />
             </div>
           </div>

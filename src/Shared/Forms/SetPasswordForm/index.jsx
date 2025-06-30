@@ -33,7 +33,7 @@ const SetPasswordForm = () => {
 
   return (
     <div className="flex items-center justify-center px-4 w-screen py-12 h-full">
-      <div className="bg-white shadow-lg rounded-xl w-full md:w-1/2 lg:w-2/5 xl:w-1/3 p-8">
+      <div className="bg-white shadow-lg rounded-xl w-full md:w-[630px] p-8">
         <div className="text-center mb-6">
           {/* <img width={150} src={Images.LOGO_IMG} alt="Logo" className="mx-auto mb-2" /> */}
           <h3 className="font-dm-sans font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[32px] leading-[40px] text-black text-center">Reset Password</h3>

@@ -31,9 +31,7 @@ const OtpForm = () => {
   // }, [timeLeft]);
 
   const handleSubmit = (values) => {
-    console.log("logged clicked")
-    alert("clicked")
-    navigate("/setNewPassword")
+    navigate("/setNewPassword");
     const data = {
       apiEndpoint: VERIFY_OTP_API_URL,
       requestData: JSON.stringify(values),
@@ -51,10 +49,12 @@ const OtpForm = () => {
   return (
     <>
       <div className="flex items-center justify-center px-4 w-screen py-12 h-full">
-        <div className="bg-white shadow-lg rounded-xl w-full md:w-1/2 lg:w-2/5 xl:w-1/3 p-8">
+        <div className="bg-white shadow-lg rounded-xl w-full md:w-[630px] p-8">
           <div className="text-center mb-6">
             {/* <img width={150} src={Images.LOGO_IMG} alt="Logo" className="mx-auto mb-2" /> */}
-            <h3 className="font-dm-sans font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[32px] leading-[40px] text-black text-center">Verification</h3>
+            <h3 className="font-dm-sans font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[32px] leading-[40px] text-black text-center">
+              Verification
+            </h3>
           </div>
 
           <Formik
@@ -63,12 +63,17 @@ const OtpForm = () => {
               ...VERIFY_OTP_INITIAL_VALUES,
               email: location?.state?.email,
             }}
-            validationSchema={VERIFY_OTP_VALIDATION_SCHEMA}
+            // validationSchema={VERIFY_OTP_VALIDATION_SCHEMA}
           >
             {({ values, errors, touched, handleChange, handleBlur }) => (
               <Form>
                 <div className="mb-4 ">
-                  <label className="text-black  font-normal mb-1">
+                 
+                  <h3 className="font-dm-sans font-normal text-[20px] leading-[24px] text-black text-center my-3">
+                    Enter the code that you received on your email
+                    fgh*****@gmail.com
+                  </h3>
+                  <label className="text-black  font-normal my-1">
                     Verification Code
                   </label>
                   <OtpInput
@@ -79,7 +84,7 @@ const OtpForm = () => {
                         target: { name: "token", value: token },
                       })
                     }
-                    containerStyle="flex flex-wrap"
+                    containerStyle="flex flex-wrap gap-1"
                     renderInput={(props) => (
                       <input
                         {...props}
@@ -89,7 +94,7 @@ const OtpForm = () => {
                           width: "91px",
                           height: "40px",
                         }}
-                        className="rounded-lg gap-3   text-center text-xl text-black border border-gray-300 transition-all text-black/30 hover:ring-[#207883] hover:ring-opacity-30 focus:outline-none focus:border-[#207883] focus:ring-[#207883] focus:ring-2 focus:ring-opacity-30"
+                        className="rounded-lg gap-5   text-center text-xl text-black border border-gray-300 transition-all text-black/30 hover:ring-[#207883] hover:ring-opacity-30 focus:outline-none focus:border-[#207883] focus:ring-[#207883] focus:ring-2 focus:ring-opacity-30"
                       />
                     )}
                   />
@@ -98,7 +103,7 @@ const OtpForm = () => {
                   )}
                 </div>
 
-                <div className="flex justify-end items-center mb-4">
+                {/* <div className="flex justify-end items-center mb-4">
                   <button
                     type="button"
                     // onClick={handleResendOtp}
@@ -113,11 +118,11 @@ const OtpForm = () => {
                       ? `Resend OTP in ${timeLeft}s`
                       : "Resend OTP"}
                   </button>
-                </div>
+                </div> */}
                 <CustomBtn
                   text="Send Code"
                   type="submit"
-                  className="py-3 px-6   rounded-sm w-full"
+                  className="py-3 px-6  w-full"
                 />
               </Form>
             )}

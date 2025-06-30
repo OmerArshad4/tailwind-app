@@ -4,7 +4,8 @@
 
 ::-webkit-scrollbar {
   width: 6px; 
-  z-index: 100000000;
+  z-index: 10000
+  ;
   height: 4px; 
 }
 
