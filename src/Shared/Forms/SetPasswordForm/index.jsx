@@ -19,26 +19,29 @@ const SetPasswordForm = () => {
   }, []);
 
   const handleSubmit = (values) => {
+      navigate("/");
     const data = {
       apiEndpoint: SET_PASSWORD_API_URL,
       requestData: JSON.stringify(values),
     };
 
-    dispatch(setNewPassword(data)).then((res) => {
-      if (res.type === "setNewPassword/fulfilled") {
-        navigate("/");
-      }
-    });
+    // dispatch(setNewPassword(data)).then((res) => {
+    //   if (res.type === "setNewPassword/fulfilled") {
+    //     navigate("/");
+    //   }
+    // });
   };
 
   return (
     <div className="flex items-center justify-center px-4 w-screen py-12 h-full">
       <div className="bg-white shadow-lg rounded-xl w-full md:w-[630px] p-8">
-        <div className="text-center mb-6">
+        <div className="text-center mb-4">
           {/* <img width={150} src={Images.LOGO_IMG} alt="Logo" className="mx-auto mb-2" /> */}
-          <h3 className="font-dm-sans font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[32px] leading-[40px] text-black text-center">Reset Password</h3>
+          <h3 className="font-dm-sans font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[32px] leading-[40px] text-black text-center">
+            Reset Password
+          </h3>
         </div>
-        <h3 className="w-full text-black mb-3 text-center">
+        <h3 className="font-dm-sans font-normal text-[20px] leading-[24px] text-black text-center mb-2">
           Create a new password
         </h3>
         <div className="w-full">
@@ -47,7 +50,7 @@ const SetPasswordForm = () => {
               ...NEW_PASSWORD_INITIAL_VALUES,
               email: location?.state?.email,
             }}
-            validationSchema={NEW_PASSWORD_VALIDATION_SCHEMA}
+            // validationSchema={NEW_PASSWORD_VALIDATION_SCHEMA}
             onSubmit={(values) => {
               handleSubmit(values);
             }}

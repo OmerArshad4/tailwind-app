@@ -16,7 +16,7 @@ const ForgotPasswordForm = (props) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (values) => {
-  navigate("/verifyOtp");
+ navigate("/verifyOtp", { state: { email: values?.email } });
     const data = {
       apiEndpoint: FORGET_PASSWORD_API_URL,
       requestData: JSON.stringify(values),

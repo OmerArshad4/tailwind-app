@@ -8,6 +8,7 @@ import { verifyEmailOtp } from "../../../Redux/features/Auth/authApi";
 import { VERIFY_OTP_INITIAL_VALUES } from "../../../Validations/InitialValues";
 import { VERIFY_OTP_VALIDATION_SCHEMA } from "../../../Validations/Validations";
 import { VERIFY_OTP_API_URL } from "../../../Utils/constant";
+import { customLogout } from "../../../Redux/features/Auth/authSlice";
 
 const OtpForm = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,8 @@ const OtpForm = () => {
   const [timeLeft, setTimeLeft] = useState(10);
   const [userEmail, setUserEmail] = useState(10);
   const [isResendDisabled, setIsResendDisabled] = useState(false);
-
+  const otpEmail = location?.state?.email
+  console.log("hshadhsha", otpEmail)
   // useEffect(() => {
   //   !location?.state?.email && navigate("/");
   // }, []);
@@ -71,9 +73,9 @@ const OtpForm = () => {
                  
                   <h3 className="font-dm-sans font-normal text-[20px] leading-[24px] text-black text-center my-3">
                     Enter the code that you received on your email
-                    fgh*****@gmail.com
+                    {otpEmail}
                   </h3>
-                  <label className="text-black  font-normal my-1">
+                  <label className="text-black  font-semibold my-1">
                     Verification Code
                   </label>
                   <OtpInput

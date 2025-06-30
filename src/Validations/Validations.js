@@ -77,7 +77,7 @@ export const newPasswordValidationWithoutRequired = Yup.string()
 
 export const SIGNIN_VALIDATION_SCHEMA = Yup.object().shape({
   email: emailValidation,
-  password: nameValidation,
+  password: newPasswordValidation,
 });
 
 export const ADD_CAR_VALIDATION_SCHEMA = Yup.object().shape({
