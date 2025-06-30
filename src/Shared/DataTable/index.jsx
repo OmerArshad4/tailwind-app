@@ -68,7 +68,7 @@ const DataTableComponent = (props) => {
       expandableRowsComponent={ExpandedComponent}
       selectableRowDisabled={selectableRowDisabled}
       onSelectedRowsChange={handleSelectedRowsChange}
-      paginationRowsPerPageOptions={[10, 20, 30, 50, 75, 100]}
+      paginationRowsPerPageOptions={[2, 20, 30, 50, 75, 100]}
     />
   );
 };

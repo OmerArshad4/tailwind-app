@@ -1,144 +1,212 @@
-import { format } from "date-fns";
-import { useDispatch, useSelector } from "react-redux";
-import Toaster from "../../Shared/Toaster";
-import { FiDownload } from "react-icons/fi";
-import DataTable from "../../Shared/DataTable";
-import PdfTemplate from "../../Shared/PdfTemplate";
-import React, { useEffect, useState } from "react";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import React, { useState } from "react";
+import { FiEye, FiEdit } from "react-icons/fi";
+import DataTable from "../../Shared/DataTable"; // Assuming you're using this
 import ExpandedCarDetails from "../../Shared/ExpandedCarDetails";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { getAllParts } from "../../Redux/features/Admin/adminApi";
+import { useNavigate } from "react-router-dom";
 
 const PartsListing = () => {
-  const location = useLocation();
-  const dispatch = useDispatch();
+  const [rowsPerPage, setRowsPerPage] = useState(10); // default
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalRows, setTotalRows] = useState(0);
   const navigate = useNavigate();
-  const { vehicleId } = useParams();
-  const [partsData, setPartsData] = useState();
-  const vehicleDetails = location?.state?.vehicleDetails;
-  const { user } = useSelector((state) => state.user);
-  const [statusInState, setStatusInState] = useState(location?.state?.status);
-
-  useEffect(() => {
-    if (!vehicleId && statusInState) {
-      const data = {
-        apiEndpoint: `getAllParts?status=${statusInState}`,
-      };
-      dispatch(getAllParts(data)).then((res) => {
-        if (res.type === "getAllParts/fulfilled") {
-          setPartsData(res?.payload?.data?.vehiclesParts?.rows);
-        }
-      });
-    } else if (vehicleId) {
-      setPartsData(location?.state?.vehicleDetails?.carPart);
-    } else if (!vehicleId && !statusInState) {
-      navigate(`/${user?.role}/otherVehicles`);
-      Toaster.error("Please select a vehicle to view this page.");
-    }
-  }, []);
+  const handleCustomerDetail = () => {
+    navigate("/admin/customerDetail");
+  };
+  const [partsData] = useState([
+    {
+      recordId: 3,
+      contact: "86797867...",
+      firstName: "Mr. John",
+      lastName: "Doe",
+      kundennummer: "250528-...",
+      salutation: "+49 123...",
+      street: "5",
+      postalCode: "23442",
+      city: "Austin",
+      dob: "1980-03...",
+      phone2: "(303) 5...",
+      email2: "tim.jenni...",
+      uploadId: "345365...",
+    },
+    {
+      recordId: 3,
+      contact: "86797867...",
+      firstName: "Mr. John",
+      lastName: "Doe",
+      kundennummer: "250528-...",
+      salutation: "+49 123...",
+      street: "5",
+      postalCode: "23442",
+      city: "Austin",
+      dob: "1980-03...",
+      phone2: "(303) 5...",
+      email2: "tim.jenni...",
+      uploadId: "345365...",
+    },
+    {
+      recordId: 3,
+      contact: "86797867...",
+      firstName: "Mr. John",
+      lastName: "Doe",
+      kundennummer: "250528-...",
+      salutation: "+49 123...",
+      street: "5",
+      postalCode: "23442",
+      city: "Austin",
+      dob: "1980-03...",
+      phone2: "(303) 5...",
+      email2: "tim.jenni...",
+      uploadId: "345365...",
+    },
+    {
+      recordId: 3,
+      contact: "86797867...",
+      firstName: "Mr. John",
+      lastName: "Doe",
+      kundennummer: "250528-...",
+      salutation: "+49 123...",
+      street: "5",
+      postalCode: "23442",
+      city: "Austin",
+      dob: "1980-03...",
+      phone2: "(303) 5...",
+      email2: "tim.jenni...",
+      uploadId: "345365...",
+    },
+    {
+      recordId: 3,
+      contact: "86797867...",
+      firstName: "Mr. John",
+      lastName: "Doe",
+      kundennummer: "250528-...",
+      salutation: "+49 123...",
+      street: "5",
+      postalCode: "23442",
+      city: "Austin",
+      dob: "1980-03...",
+      phone2: "(303) 5...",
+      email2: "tim.jenni...",
+      uploadId: "345365...",
+    },
+  ]);
 
   const partsListingTableHeadings = [
+    // {
+    //   name: "Record ID",
+    //   selector: (row) => row.recordId,
+    //   sortable: true,
+    // },
     {
-      name: "Part Number",
-      selector: (row) => row.partNumber,
+      name: "Contact",
+      selector: (row) => row.contact,
       sortable: true,
     },
     {
-      name: "Description",
-      selector: (row) => row.description,
+      name: "First Name",
+      selector: (row) => row.firstName,
       sortable: true,
     },
     {
-      name: "Quantity",
-      selector: (row) => row.quantity,
+      name: "Last Name",
+      selector: (row) => row.lastName,
       sortable: true,
     },
     {
-      name: "Price",
-      selector: (row) => row.price,
+      name: "Kundennummer",
+      selector: (row) => row.kundennummer,
       sortable: true,
     },
     {
-      name: "Our Price",
-      selector: (row) => row.ourPrice,
+      name: "Salutation",
+      selector: (row) => row.salutation,
       sortable: true,
     },
     {
-      name: "Delivery Date",
-      selector: (row) => format(new Date(row?.deliveryDate), "MM-dd-yyyy"),
+      name: "Street",
+      selector: (row) => row.street,
       sortable: true,
     },
     {
-      name: "Supplier",
-      selector: (row) => row.supplier,
+      name: "Postal Code",
+      selector: (row) => row.postalCode,
       sortable: true,
     },
     {
-      name: "Notes",
-      selector: (row) => row.notes,
+      name: "City",
+      selector: (row) => row.city,
       sortable: true,
     },
     {
-      name: "Status",
-      selector: (row) => row.status,
+      name: "DOB",
+      selector: (row) => row.dob,
       sortable: true,
     },
     {
-      name: "Download",
-      selector: (row) => (
+      name: "Phone 2",
+      selector: (row) => row.phone2,
+      sortable: true,
+    },
+    {
+      name: "Email2",
+      selector: (row) => row.email2,
+      sortable: true,
+    },
+    {
+      name: "Upload ID",
+      selector: (row) => row.uploadId,
+      sortable: true,
+    },
+    {
+      name: "Actions",
+      selector: () => (
         <div className="flex gap-2">
-          <PDFDownloadLink
-            document={<PdfTemplate data={row} />}
-            fileName={`${row?.partNumber}.pdf`}
+          <button
+            onClick={handleCustomerDetail}
+            className="p-1 rounded bg-gray-200 hover:bg-gray-300"
           >
-            {({ loading }) =>
-              loading ? (
-                <span className="flex items-center gap-2">
-                  <FiDownload
-                    size={36}
-                    className=" p-1.5 rounded-sm bg-blue-200 text-blue-600  cursor-pointer"
-                  />
-                </span>
-              ) : (
-                <span className="flex items-center gap-2">
-                  <FiDownload
-                    size={36}
-                    className=" p-1.5 rounded-sm bg-blue-200 text-blue-600  cursor-pointer"
-                  />
-                </span>
-              )
-            }
-          </PDFDownloadLink>
+            <FiEye size={16} />
+          </button>
+          <button className="p-1 rounded bg-gray-200 hover:bg-gray-300">
+            <FiEdit size={16} />
+          </button>
         </div>
       ),
     },
   ];
+  const handleChangeRowsPerPage = (newPerPage, page) => {
+    setRowsPerPage(newPerPage);
+    setCurrentPage(page);
+
+    // If you're using API:
+    // fetchPartsData({ perPage: newPerPage, page: page });
+  };
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+
+    // If you're using API:
+    // fetchPartsData({ perPage: rowsPerPage, page: page });
+  };
 
   return (
     <div className="m-4 md:m-8 lg:mx-12">
       <h1 className="text-stone-900 font-semibold text-xl mb-4">
-        {vehicleDetails &&
-          vehicleDetails?.make +
-            " " +
-            vehicleDetails?.model +
-            " " +
-            vehicleDetails?.year}{" "}
-        {""}
-        Parts Listing
+        Dummy User Record Table
       </h1>
 
       <div className="border border-gray-300 rounded-sm shadow-md bg-white">
         <div className="flex justify-between p-6 items-center">
           <h1 className="text-stone-900 font-semibold text-2xl mb-4 items-center flex gap-x-4">
             <p className="text-blue-600">{partsData?.length}</p>
-            {statusInState} Parts
+            Records
           </h1>
         </div>
         <DataTable
           pagination={true}
+          totalRows={totalRows}
           allData={partsData}
           expandableRows={true}
+          onChangePage={handlePageChange}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
           selectableRows={false}
           tableHeadings={partsListingTableHeadings}
           ExpandedComponent={(rowData) => <ExpandedCarDetails row={rowData} />}

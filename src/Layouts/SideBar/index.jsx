@@ -41,12 +41,12 @@ const Sidebar = ({ toggleSidebar, isSidebarOpen }) => {
     },
     {
       title: "Upload Customers",
-      link: "/admin/upload-customers",
+      link: "/admin/uploadCustomers",
       icon: <FaUpload size={22} />, // You can install or replace with your preferred upload icon
     },
     {
       title: "Customer List",
-      link: "/admin/customer-list",
+      link: "/admin/customersListing",
       icon: <FaUserFriends size={22} />,
     },
     {

@@ -18,7 +18,7 @@ const SignInForm = () => {
   const handleLoginSubmit = (values) => {
      const dummyUser = {
     email: "admin@example.com",
-    password: "Admin@123",
+    password: "Password@1",
   };  if (
     values.email === dummyUser.email &&
     values.password === dummyUser.password
